@@ -27,7 +27,7 @@ def scroll(driver):
         view_all_button.click()
     except NoSuchElementException:
         pass
-    for i in range(5):
+    for i in range(5000):
         print("正在进行第"+str(i+1)+"次滚动")
         try:
             read_moer_button=driver.find_element(By.CSS_SELECTOR,".ContentItem-more")
