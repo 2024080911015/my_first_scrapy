@@ -15,7 +15,7 @@ import requests
 driver_path="C:/Users/iiijj/PycharmProjects/my_first_scrapy/chromedriver.exe"
 service=Service(driver_path)
 options=webdriver.ChromeOptions()
-# options.add_argument("--headless")
+#options.add_argument("--headless")
 options.add_experimental_option("useAutomationExtension", False)
 options.add_experimental_option("excludeSwitches", ["enable-automation"])
 service = Service(driver_path)

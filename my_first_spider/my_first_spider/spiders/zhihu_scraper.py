@@ -22,21 +22,26 @@ def load_cookies(driver):
         for cookie in cookies:
             driver.add_cookie(cookie)
 def scroll(driver):
-    for i in range(50):
+    try:
+        view_all_button=driver.find_element(By.CSS_SELECTOR,".ViewAll-QuestionMainAction")
+        view_all_button.click()
+    except NoSuchElementException:
+        pass
+    for i in range(5):
         print("正在进行第"+str(i+1)+"次滚动")
         try:
             read_moer_button=driver.find_element(By.CSS_SELECTOR,".ContentItem-more")
             read_moer_button.click()
         except NoSuchElementException:
             pass
-        driver.execute_script("window.scrollBy(0,50)")
+        driver.execute_script("window.scrollBy(0,1000)")
         time.sleep(1)
 
 
 class ZhihuScraperSpider(scrapy.Spider):
     name = "zhihu_scraper"
     #allowed_domains = ["www.zhihu.com"]
-    start_urls = ["https://www.zhihu.com/search?type=content&q=%E5%88%BB%E6%99%B4%E5%9B%BE%E7%89%87", "https://www.zhihu.com/search?type=content&q=%E5%8D%A1%E8%8A%99%E5%8D%A1", "https://www.zhihu.com/search?q=%E6%B5%81%E8%90%A4%E5%9B%BE%E7%89%87&search_source=History&utm_content=search_history&type=content", "https://www.zhihu.com/search?type=content&q=%E4%BA%8C%E6%AC%A1%E5%85%83%E7%BE%8E%E5%B0%91%E5%A5%B3%E5%9B%BE%E7%89%87"]
+    start_urls = ["https://www.zhihu.com/question/575409863/answer/3577518284"]
 
 
     selenium_actions=[load_cookies,scroll]
